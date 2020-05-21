@@ -4,6 +4,8 @@ const http = require('http')
 const server = http.createServer(app);
 //For writing stuff to the frontend
 const socketIO = require('socket.io');
+// Create socket.io instance be passing the server we created to the socket library
+const io = socketIO(server);
 //don't know if this is needed
 const bodyParser = require('body-parser')
 //for requesting the json from Rejseplanen
@@ -67,17 +69,12 @@ request(url, options, (error, res, body) => {
       console.log("waitTimes" + "[" + i + "]" + "is " + waitTimes[i]);
     });
 
-    // Create socket.io instance be passing the server we created to the socket library
-    const io = socketIO(server);
-    // Listening to socket connection event to handle communication state after the handshake communication was established.
-    io.on('connection', function (socket) {
-      socket.emit('waitTimes', {lineID: lineID, departureTimes: departureTimes, waitTimes: waitTimes});
-    });
+    io.sockets.emit('waitTimes', {lineID: lineID, departureTimes: departureTimes, waitTimes: waitTimes});
 
   };
 });
 console.log("requestLoop has looped");
-}, 5000);
+}, 3000);
 
 
 server.listen(port, () => console.log(`Listening on port ${port}!`))

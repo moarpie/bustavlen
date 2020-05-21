@@ -6,7 +6,7 @@ socket.on('waitTimes', function (message) {
   console.log("departure time 1 is " +  message.departureTimes[2]);
   console.log("wait 3 is " +            message.waitTimes[2]);
 
-  $('#message').html(message.outputTimes);
+  $('#waitTime1').html(message.waitTimes[0]);
 });
 
 
