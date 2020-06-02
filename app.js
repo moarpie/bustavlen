@@ -4,19 +4,12 @@ const http = require('http')
 const server = http.createServer(app);
 //For writing stuff to the frontend
 const socketIO = require('socket.io');
-// Create socket.io instance be passing the server we created to the socket library
 const io = socketIO(server);
-//don't know if this is needed
-const bodyParser = require('body-parser')
-//for requesting the json from Rejseplanen
+//for requesting the JSON from Rejseplanen
 const request = require('request');
 //to calculate time difference
-var moment = require('moment');
+const moment = require('moment');
 const port = 3000
-
-//To read incoming JSON
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({ extended: true }));
 
 //serve files from app folder
 app.use(express.static('frontend'));
@@ -61,7 +54,7 @@ request(url, options, (error, res, body) => {
       var t1 = moment(item, "HH:mm:");
       var t2 = moment(currentTime, "HH:mm:");
 
-      //calculating time difference
+      //calculating time difference with Moment
       var timeDif = moment.utc(t1.diff(t2)).format("mm");
 
       //This removes leading zeros from the final time difference
@@ -69,12 +62,12 @@ request(url, options, (error, res, body) => {
       console.log("waitTimes" + "[" + i + "]" + "is " + waitTimes[i]);
     });
 
-    io.sockets.emit('waitTimes', {lineID: lineID, departureTimes: departureTimes, waitTimes: waitTimes});
+    io.sockets.emit('busData', {lineID: lineID, departureTimes: departureTimes, waitTimes: waitTimes});
 
   };
 });
 console.log("requestLoop has looped");
-}, 3000);
+}, 15000);
 
 
 server.listen(port, () => console.log(`Listening on port ${port}!`))

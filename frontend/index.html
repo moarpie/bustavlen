@@ -8,21 +8,81 @@
   <meta name="description" content="Template">
   <meta name="author" content="michael@vendila.dk">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="main.css?v=1.0">
 
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12 d-flex justify-content-center">
-        <div class="boardContainer">
-          <div id="card1" class="boardCard">
-            <div id="waitTime1"></div>
+  <div class="container-fluid d-flex justify-content-center">
+    <div class="boardContainer">
 
+      <div class="row boardCard">
+        <div class="indicator">
+          <div id="color0" ></div>
+        </div>
+        <div class="col d-flex align-items-center">
+          <div class="waitTime">
+            <span id="waitTime0">99</span>
+            <span class="minutes">minutter</span>
+          </div>
+        </div>
+        <div class="col">
+          <div class="info">
+            <span id="lineID0">99</span>
+            <div class="icon"><img src="img/bus.svg" alt=""></div>
+          </div>
+          <div class="info">
+            <span id="departureTime0">23:59</span>
+            <div class="icon"><img src="img/clock.svg" alt=""></div>
           </div>
         </div>
       </div>
+
+      <div class="row boardCard">
+        <div class="indicator">
+          <div id="color1" ></div>
+        </div>
+        <div class="col d-flex align-items-center">
+          <div class="waitTime">
+            <span id="waitTime1">99</span>
+            <span class="minutes">minutter</span>
+          </div>
+        </div>
+        <div class="col">
+          <div class="info">
+            <span id="lineID1">99</span>
+            <div class="icon"><img src="img/bus.svg" alt=""></div>
+          </div>
+          <div class="info">
+            <span id="departureTime1">23:59</span>
+            <div class="icon"><img src="img/clock.svg" alt=""></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row boardCard">
+        <div class="indicator">
+          <div id="color2" ></div>
+        </div>
+        <div class="col d-flex align-items-center">
+          <div class="waitTime">
+            <span id="waitTime2">99</span>
+            <span class="minutes">minutter</span>
+          </div>
+        </div>
+        <div class="col">
+          <div class="info">
+            <span id="lineID2">99</span>
+            <div class="icon"><img src="img/bus.svg" alt=""></div>
+          </div>
+          <div class="info">
+            <span id="departureTime2">23:59</span>
+            <div class="icon"><img src="img/clock.svg" alt=""></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -31,8 +91,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
   <script>
-    var socket = io('http://localhost:3000');
-  </script>
-  <script src="script.js"></script>
+  var socket = io('http://localhost:3000');
+</script>
+<script src="script.js"></script>
 </body>
 </html>
